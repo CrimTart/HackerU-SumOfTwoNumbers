@@ -1,9 +1,11 @@
 package com.company;
 
 public class Sum {
-    //A function calculating the sum of two integers.
-    public static long sum(int first, int second) {
-        return (long)first + (long)second;
+    //A function calculating the sum of two integers. Overflow is discarded.
+    public static int sum(int first, int second) {
+        long res = (long)first + (long)second;
+        if (res >= 0) return (int)(res % Integer.MAX_VALUE);
+        else return (int)(res % Integer.MIN_VALUE);
     }
 
     //Some simple tests for the sum function.
